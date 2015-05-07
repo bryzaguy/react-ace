@@ -73,10 +73,10 @@ module.exports = React.createClass({
     this.editor.setOption('highlightActiveLine', nextProps.highlightActiveLine);
     this.editor.setShowPrintMargin(nextProps.setShowPrintMargin);
     this.editor.getSession().setUseWrapMode(nextProps.wordWrap);
-    this.editor.clearSelection();
     if (this.editor.getValue() !== nextProps.value) {
       this.editor.setValue(nextProps.value);
     }
+    this.editor.clearSelection();
     this.editor.renderer.setShowGutter(nextProps.showGutter);
     if (nextProps.onLoad) {
       nextProps.onLoad(this.editor);
