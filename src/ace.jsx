@@ -7,10 +7,10 @@ var React = require('react');
 module.exports = React.createClass({
   propTypes: {
     mode  : React.PropTypes.string,
+    className : React.PropTypes.string,
+    wordWrap : React.PropTypes.string,
     theme : React.PropTypes.string,
     name : React.PropTypes.string,
-    height : React.PropTypes.string,
-    width : React.PropTypes.string,
     fontSize : React.PropTypes.number,
     showGutter : React.PropTypes.bool,
     onChange: React.PropTypes.func,
@@ -26,9 +26,8 @@ module.exports = React.createClass({
       name   : 'brace-editor',
       mode   : '',
       theme  : '',
-      height : '500px',
-      width  : '500px',
       value  : '',
+      className  : '',
       fontSize   : 12,
       showGutter : true,
       onChange   : null,
@@ -73,6 +72,8 @@ module.exports = React.createClass({
     this.editor.setOption('readOnly', nextProps.readOnly);
     this.editor.setOption('highlightActiveLine', nextProps.highlightActiveLine);
     this.editor.setShowPrintMargin(nextProps.setShowPrintMargin);
+    this.editor.getSession().setUseWrapMode(nextProps.wordWrap);
+    this.editor.clearSelection();
     if (this.editor.getValue() !== nextProps.value) {
       this.editor.setValue(nextProps.value);
     }
@@ -83,10 +84,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var divStyle = {
-      width: this.props.width,
-      height: this.props.height
-    };
-    return (<div id={this.props.name} onChange={this.onChange} style={divStyle}></div>);
+    return (<div id={this.props.name} onChange={this.onChange} className={this.props.className}></div>);
   }
+
 });
