@@ -3,7 +3,6 @@
 var ace = require('brace');
 var React = require('react');
 
-
 module.exports = React.createClass({
   propTypes: {
     mode  : React.PropTypes.string,
@@ -52,17 +51,18 @@ module.exports = React.createClass({
     this.editor.setFontSize(this.props.fontSize);
     this.editor.on('change', this.onChange);
     this.editor.setValue(this.props.value);
+    this.editor.clearSelection();
     this.editor.renderer.setShowGutter(this.props.showGutter);
     this.editor.setOption('maxLines', this.props.maxLines);
     this.editor.setOption('readOnly', this.props.readOnly);
     this.editor.setOption('highlightActiveLine', this.props.highlightActiveLine);
+    this.editor.getSession().setUseWrapMode(this.props.wordWrap);
     this.editor.setShowPrintMargin(this.props.setShowPrintMargin);
 
     if (this.props.onLoad) {
       this.props.onLoad(this.editor);
     }
   },
-
   componentWillReceiveProps: function(nextProps) {
     this.editor = ace.edit(nextProps.name);
     this.editor.getSession().setMode('ace/mode/'+nextProps.mode);
@@ -82,9 +82,7 @@ module.exports = React.createClass({
       nextProps.onLoad(this.editor);
     }
   },
-
   render: function() {
     return (<div id={this.props.name} onChange={this.onChange} className={this.props.className}></div>);
   }
-
 });

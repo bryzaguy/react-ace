@@ -3,21 +3,8 @@
   "version": "2.0.0",
   "description": "A react component for Ace Editor",
   "main": "index.js",
-  "scripts": {
-    "build_example": "gulp example",
-    "build_watch": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "James Hrisho",
   "license": "MIT",
-  "devDependencies": {
-    "browserify": "^6.3.3",
-    "gulp": "^3.8.10",
-    "gulp-jshint": "^1.9.0",
-    "gulp-react": "^2.0.0",
-    "jest": "^0.1.37",
-    "vinyl-source-stream": "^1.0.0"
-  },
   "keywords": [
     "ace",
     "ace editor",
@@ -25,20 +12,10 @@
     "react",
     "brace"
   ],
-  "browserify": {
-    "transform": [
-      [
-        "reactify"
-      ]
-    ]
-  },
   "dependencies": {
     "brace": "^0.4.0",
-    "browserify": "^9.0.8",
     "jsx-loader": "^0.12.2",
-    "lodash": "^2.4.1",
-    "react": "^0.13.2",
-    "reactify": "^1.1.0"
+    "react": "^0.13.2"
   },
   "repository": {
     "type": "git",
