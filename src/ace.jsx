@@ -44,7 +44,7 @@ module.exports = React.createClass({
     }
   },
   init: function (props) {
-    editor = ace.edit(props.name);
+    var editor = this.editor = ace.edit(props.name);
     editor.getSession().setMode('ace/mode/'+props.mode);
     editor.setTheme('ace/theme/'+props.theme);
     editor.setFontSize(props.fontSize);
@@ -65,6 +65,7 @@ module.exports = React.createClass({
   },
   componentDidMount: function() {
     this.init(this.props);
+    this.editor.on('change', this.onChange);
   },
   componentWillReceiveProps: function(nextProps) {
     this.init(nextProps);
